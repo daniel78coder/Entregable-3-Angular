@@ -15,7 +15,7 @@ import { ApiService } from './services/api.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'Sistema de Gestion de Alumnos (version 0.3)';
+  title = 'Sistema de Gestion de Estudiantes (version 0.3)';
 
   constructor(
     private store: Store,
