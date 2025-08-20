@@ -59,7 +59,7 @@ Angular CLI 17+
 📥 Instalación
 # Clonar el repositorio
 git clone <url-del-repositorio>
-cd gestion-estudiantil
+cd gestion-alumnos
 
 # Instalar dependencias
 npm install
