@@ -1,0 +1,36 @@
+<div class="inscription-list-container">
+  <div class="header">
+    <h2>Lista de Inscripciones</h2>
+    <button class="btn-primary" routerLink="/inscription/new">Nueva Inscripción</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Cargando inscripciones...</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && inscriptions.length === 0" class="no-data">
+    <h3>No hay inscripciones registradas</h3>
+    <p>Haz clic en "Nueva Inscripción" para comenzar</p>
+  </div>
+
+  <table *ngIf="!loading && inscriptions.length > 0" class="inscriptions-table">
+    <thead>
+      <tr>
+        <th>Estudiante</th>
+        <th>Curso</th>
+        <th>Fecha de Inscripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inscription of inscriptions">
+        <td>{{ inscription.student?.name || 'Estudiante ' + inscription.studentId }}</td>
+        <td>{{ inscription.course?.name || 'Curso ' + inscription.courseId }}</td>
+        <td>{{ inscription.inscriptionDate | formatDate }}</td>
+        <td class="actions">
+          <button class="btn-danger" (click)="deleteInscription(inscription.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="course-list-container">
+  <h2>Lista de Cursos</h2>
+
+  <div *ngIf="loading" class="loading">Cargando cursos...</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error && courses.length > 0" class="courses-grid">
+    <div *ngFor="let course of courses" class="course-card">
+      <div class="course-header">
+        <h3>{{ course.name }}</h3>
+        <span class="course-code">{{ course.code }}</span>
+      </div>
+
+      <div class="course-details">
+        <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+        <p><strong>Duración:</strong> {{ course.duration }} semanas</p>
+        <p><strong>Estudiantes inscritos:</strong> {{ getStudentsCount(course.id) }}</p>
+        <p><strong>Fecha de inicio:</strong> {{ course.startDate | formatDate }}</p>
+      </div>
+
+      <div class="course-description">
+        <p>{{ course.description || 'Sin descripción disponible.' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && courses.length === 0" class="no-data">
+    No hay cursos disponibles.
+  </div>
+</div>

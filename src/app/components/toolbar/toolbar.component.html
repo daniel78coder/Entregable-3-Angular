@@ -1,0 +1,9 @@
+<header class="toolbar">
+  <div class="toolbar-title">
+    <h1>Student Management System</h1>
+  </div>
+  <div class="toolbar-actions" *ngIf="isAuthenticated$ | async">
+    <span>Bienvenido, {{ (user$ | async)?.name }}</span>
+    <button (click)="logout()">Cerrar Sesión</button>
+  </div>
+</header>

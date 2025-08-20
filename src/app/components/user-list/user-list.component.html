@@ -1,0 +1,44 @@
+<div class="user-list-container">
+  <div class="header">
+    <h2>Gestión de Usuarios</h2>
+    <button class="btn-primary">Agregar Usuario</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Cargando usuarios...</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && !error && users.length > 0" class="users-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Fecha de Registro</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role | roleDisplay }}</td>
+        <td>{{ user.createdAt | formatDate }}</td>
+        <td>
+          <span [class]="user.active ? 'status-active' : 'status-inactive'">
+            {{ user.active ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="actions">
+          <button class="btn-info">Editar</button>
+          <button (click)="deleteUser(user.id)" class="btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && users.length === 0" class="no-data">
+    No hay usuarios registrados.
+  </div>
+</div>
