@@ -10,7 +10,7 @@ export class FormatDatePipe implements PipeTransform {
 
     const date = new Date(value);
 
-    // Verificar si la fecha es válida
+    
     if (isNaN(date.getTime())) {
       return '';
     }

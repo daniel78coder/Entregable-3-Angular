@@ -31,7 +31,7 @@
 }
 
 .navbar a::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -63,9 +63,8 @@
   background: #ecf0f1;
 }
 
-/* Iconos (puedes agregar iconos reales después) */
 .navbar a::after {
-  content: '→';
+  content: "→";
   margin-left: auto;
   opacity: 0;
   transition: opacity 0.3s ease;

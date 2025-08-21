@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { Student } from '../../models';
+import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { ApiService } from "../../services/api.service";
+import { Student } from "../../models";
 
 @Component({
-  selector: 'app-student-list',
+  selector: "app-student-list",
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css']
+  templateUrl: "./student-list.component.html",
+  styleUrls: ["./student-list.component.css"],
 })
 export class StudentListComponent implements OnInit {
   students: Student[] = [];
@@ -32,23 +32,23 @@ export class StudentListComponent implements OnInit {
         this.loading = false;
       },
       error: (err: Error) => {
-        this.error = 'Error al cargar los estudiantes';
+        this.error = "Error al cargar los estudiantes";
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
   deleteStudent(id: string): void {
-    if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
+    if (confirm("¿Estás seguro de que quieres eliminar este estudiante?")) {
       this.apiService.deleteStudent(id).subscribe({
         next: () => {
-          this.students = this.students.filter(student => student.id !== id);
+          this.students = this.students.filter((student) => student.id !== id);
         },
         error: (err: Error) => {
-          alert('Error al eliminar el estudiante');
+          alert("Error al eliminar el estudiante");
           console.error(err);
-        }
+        },
       });
     }
   }

@@ -1,7 +1,9 @@
 <div class="inscription-list-container">
   <div class="header">
     <h2>Lista de Inscripciones</h2>
-    <button class="btn-primary" routerLink="/inscription/new">Nueva Inscripción</button>
+    <button class="btn-primary" routerLink="/inscription/new">
+      Nueva Inscripción
+    </button>
   </div>
 
   <div *ngIf="loading" class="loading">Cargando inscripciones...</div>
@@ -24,11 +26,22 @@
     </thead>
     <tbody>
       <tr *ngFor="let inscription of inscriptions">
-        <td>{{ inscription.student?.name || 'Estudiante ' + inscription.studentId }}</td>
-        <td>{{ inscription.course?.name || 'Curso ' + inscription.courseId }}</td>
+        <td>
+          {{
+            inscription.student?.name || "Estudiante " + inscription.studentId
+          }}
+        </td>
+        <td>
+          {{ inscription.course?.name || "Curso " + inscription.courseId }}
+        </td>
         <td>{{ inscription.inscriptionDate | formatDate }}</td>
         <td class="actions">
-          <button class="btn-danger" (click)="deleteInscription(inscription.id)">Eliminar</button>
+          <button
+            class="btn-danger"
+            (click)="deleteInscription(inscription.id)"
+          >
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>

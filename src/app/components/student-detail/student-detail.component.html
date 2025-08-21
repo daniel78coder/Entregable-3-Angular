@@ -1,5 +1,5 @@
 <div class="student-detail-container">
-  <h2>{{ isEditMode ? 'Editar Estudiante' : 'Nuevo Estudiante' }}</h2>
+  <h2>{{ isEditMode ? "Editar Estudiante" : "Nuevo Estudiante" }}</h2>
 
   <div *ngIf="loading" class="loading">Cargando...</div>
 
@@ -13,7 +13,8 @@
         id="name"
         [(ngModel)]="student.name"
         name="name"
-        required>
+        required
+      />
     </div>
 
     <div class="form-group">
@@ -23,16 +24,13 @@
         id="email"
         [(ngModel)]="student.email"
         name="email"
-        required>
+        required
+      />
     </div>
 
     <div class="form-group">
       <label for="phone">Teléfono:</label>
-      <input
-        type="tel"
-        id="phone"
-        [(ngModel)]="student.phone"
-        name="phone">
+      <input type="tel" id="phone" [(ngModel)]="student.phone" name="phone" />
     </div>
 
     <div class="form-group">
@@ -42,7 +40,8 @@
         id="course"
         [(ngModel)]="student.course"
         name="course"
-        required>
+        required
+      />
     </div>
 
     <div class="form-group" *ngIf="isEditMode">
@@ -51,9 +50,11 @@
     </div>
 
     <div class="form-actions">
-      <button type="button" (click)="cancel()" class="btn-secondary">Cancelar</button>
+      <button type="button" (click)="cancel()" class="btn-secondary">
+        Cancelar
+      </button>
       <button type="submit" [disabled]="loading" class="btn-primary">
-        {{ loading ? 'Guardando...' : 'Guardar' }}
+        {{ loading ? "Guardando..." : "Guardar" }}
       </button>
     </div>
   </form>

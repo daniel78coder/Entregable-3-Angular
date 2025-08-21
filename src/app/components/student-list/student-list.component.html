@@ -1,14 +1,19 @@
 <div class="student-list-container">
   <div class="header">
     <h2>Lista de Estudiantes</h2>
-    <button routerLink="/student/new" class="btn-primary">Agregar Estudiante</button>
+    <button routerLink="/student/new" class="btn-primary">
+      Agregar Estudiante
+    </button>
   </div>
 
   <div *ngIf="loading" class="loading">Cargando estudiantes...</div>
 
   <div *ngIf="error" class="error">{{ error }}</div>
 
-  <table *ngIf="!loading && !error && students.length > 0" class="students-table">
+  <table
+    *ngIf="!loading && !error && students.length > 0"
+    class="students-table"
+  >
     <thead>
       <tr>
         <th>Nombre</th>
@@ -25,8 +30,12 @@
         <td>{{ student.phone }}</td>
         <td>{{ student.course }}</td>
         <td class="actions">
-          <button [routerLink]="['/student', student.id]" class="btn-info">Ver</button>
-          <button (click)="deleteStudent(student.id)" class="btn-danger">Eliminar</button>
+          <button [routerLink]="['/student', student.id]" class="btn-info">
+            Ver
+          </button>
+          <button (click)="deleteStudent(student.id)" class="btn-danger">
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>

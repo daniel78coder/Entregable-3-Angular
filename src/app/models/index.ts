@@ -5,7 +5,7 @@ export interface Student {
   email: string;
   phone?: string;
   course: string;
-  enrollmentDate?: string; // ← Hacer opcional con ?
+  enrollmentDate?: string;
 }
 
 export interface User {
@@ -13,7 +13,7 @@ export interface User {
   name: string;
   email: string;
   password?: string;
-  role: 'admin' | 'user'; 
+  role: "admin" | "user";
   active?: boolean;
   createdAt?: string;
 }

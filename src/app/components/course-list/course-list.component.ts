@@ -39,8 +39,6 @@ export class CourseListComponent implements OnInit {
   }
 
   getStudentsCount(courseId: string): number {
-    // Esta función asume que tienes una forma de contar estudiantes por curso
-    // En una implementación real, esto vendría del API
-    return Math.floor(Math.random() * 20) + 5; // Valor aleatorio para demostración
+    return Math.floor(Math.random() * 20) + 5; 
   }
 }
