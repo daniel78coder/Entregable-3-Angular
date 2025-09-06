@@ -16,11 +16,11 @@ import { Student } from "../../models";
 export class StudentDetailComponent implements OnInit {
   student: Student = {
     id: "",
-    name: "",
+    nombre: "",
     email: "",
-    phone: "",
-    course: "",
-    enrollmentDate: new Date().toISOString().split("T")[0],
+    telefono: "",
+    curso: "",
+    fechaDeInicio: new Date().toISOString().split("T")[0],
   };
   isEditMode = false;
   loading = false;
@@ -47,8 +47,8 @@ export class StudentDetailComponent implements OnInit {
       next: (data: Student) => {
         this.student = {
           ...data,
-          enrollmentDate:
-            data.enrollmentDate || new Date().toISOString().split("T")[0],
+          fechaDeInicio:
+            data.fechaDeInicio || new Date().toISOString().split("T")[0],
         };
         this.loading = false;
       },

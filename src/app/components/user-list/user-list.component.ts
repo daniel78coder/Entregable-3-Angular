@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 import { RoleDisplayPipe } from '../../pipes/role-display.pipe';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';

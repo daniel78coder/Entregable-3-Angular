@@ -1,7 +1,9 @@
 <div class="user-list-container">
   <div class="header">
     <h2>Gestión de Usuarios</h2>
-    <button class="btn-primary">Agregar Usuario</button>
+    <button class="btn-primary" routerLink="/user/new">
+      Agregar Usuario
+    </button>
   </div>
 
   <div *ngIf="loading" class="loading">Cargando usuarios...</div>
@@ -21,7 +23,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <td>{{ user.name }}</td>
+        <td>{{ user.nombre }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.role | roleDisplay }}</td>
         <td>{{ user.createdAt | formatDate }}</td>
@@ -31,7 +33,6 @@
           </span>
         </td>
         <td class="actions">
-          <button class="btn-info">Editar</button>
           <button (click)="deleteUser(user.id)" class="btn-danger">Eliminar</button>
         </td>
       </tr>

@@ -12,9 +12,8 @@ import {
   ApiResponse,
 } from "../models";
 
-// URLs de las dos cuentas MockAPI
-const BASE_URL_1 = "https://68a630e6639c6a54e99e3059.mockapi.io";
-const BASE_URL_2 = "https://68a63f2b639c6a54e99e5050.mockapi.io";
+const BASE_URL_1 = "https://68a630e6639c6a54e99e3059.mockapi.io/";
+const BASE_URL_2 = "https://68a63f2b639c6a54e99e5050.mockapi.io/";
 
 @Injectable({
   providedIn: "root",
@@ -24,12 +23,12 @@ export class ApiService {
 
   // === METODO DE DIAGNOSTICO ===
   checkApiStatus(): Observable<User[]> {
-    return this.http.get<User[]>(`${BASE_URL_2}/user`);
+    return this.http.get<User[]>(`${BASE_URL_2}/users`);
   }
 
   // === LOGIN ===
   login(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.http.get<User[]>(`${BASE_URL_2}/user`).pipe(
+    return this.http.get<User[]>(`${BASE_URL_2}/users`).pipe(
       map((users) => {
         const user = users.find(
           (u) =>
@@ -40,7 +39,7 @@ export class ApiService {
           return {
             user: {
               id: user.id,
-              name: user.name,
+              nombre: user.nombre,
               email: user.email,
               role: user.role,
             },
@@ -55,21 +54,21 @@ export class ApiService {
         const mockUsers: User[] = [
           {
             id: "1",
-            name: "Admin User",
+            nombre: "Admin User",
             email: "admin@example.com",
             password: "password123",
             role: "admin",
           },
           {
             id: "2",
-            name: "John Doe",
+            nombre: "John Doe",
             email: "john@example.com",
             password: "password123",
             role: "user",
           },
           {
             id: "3",
-            name: "Jane Smith",
+            nombre: "Jane Smith",
             email: "jane@example.com",
             password: "password123",
             role: "user",
@@ -85,7 +84,7 @@ export class ApiService {
           const response: LoginResponse = {
             user: {
               id: user.id,
-              name: user.name,
+              nombre: user.nombre,
               email: user.email,
               role: user.role,
             },
@@ -115,11 +114,11 @@ export class ApiService {
       catchError((error) => {
         const mockStudent: Student = {
           id: id,
-          name: "",
+          nombre: "",
           email: "",
-          phone: "",
-          course: "",
-          enrollmentDate: new Date().toISOString().split("T")[0],
+          telefono: "",
+          curso: "",
+          fechaDeInicio: new Date().toISOString().split("T")[0],
         };
         return of(mockStudent).pipe(delay(500));
       })
@@ -132,8 +131,8 @@ export class ApiService {
         const mockResponse: Student = {
           ...student,
           id: Math.random().toString(36).substr(2, 9),
-          enrollmentDate:
-            student.enrollmentDate || new Date().toISOString().split("T")[0],
+          fechaDeInicio:
+            student.fechaDeInicio || new Date().toISOString().split("T")[0],
         };
         return of(mockResponse).pipe(delay(800));
       })
@@ -170,26 +169,26 @@ export class ApiService {
 
   // === METODOS PARA USUARIOS (BASE_URL_2) ===
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${BASE_URL_2}/user`).pipe(
+    return this.http.get<User[]>(`${BASE_URL_2}/users`).pipe(
       catchError((error) => {
         const mockUsers: User[] = [
           {
             id: "1",
-            name: "Admin User",
+            nombre: "Admin User",
             email: "admin@example.com",
             role: "admin",
             createdAt: "2024-01-01",
           },
           {
             id: "2",
-            name: "John Doe",
+            nombre: "John Doe",
             email: "john@example.com",
             role: "user",
             createdAt: "2024-02-01",
           },
           {
             id: "3",
-            name: "Jane Smith",
+            nombre: "Jane Smith",
             email: "jane@example.com",
             role: "user",
             createdAt: "2024-03-01",
@@ -201,7 +200,7 @@ export class ApiService {
   }
 
   deleteUser(id: string): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(`${BASE_URL_2}/user/${id}`).pipe(
+    return this.http.delete<ApiResponse>(`${BASE_URL_2}/users/${id}`).pipe(
       catchError((error) => {
         const response: ApiResponse = { success: true };
         return of(response).pipe(delay(400));
@@ -210,11 +209,11 @@ export class ApiService {
   }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(`${BASE_URL_2}/user/${id}`).pipe(
+    return this.http.get<User>(`${BASE_URL_2}/users/${id}`).pipe(
       catchError((error) => {
         const mockUser: User = {
           id: id,
-          name: "Usuario Ejemplo",
+          nombre: "Usuario Ejemplo",
           email: "usuario@example.com",
           role: "user",
         };
@@ -224,7 +223,7 @@ export class ApiService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${BASE_URL_2}/user`, user).pipe(
+    return this.http.post<User>(`${BASE_URL_2}/users`, user).pipe(
       catchError((error) => {
         const mockResponse: User = {
           ...user,
@@ -236,7 +235,7 @@ export class ApiService {
   }
 
   updateUser(id: string, user: User): Observable<User> {
-    return this.http.put<User>(`${BASE_URL_2}/user/${id}`, user).pipe(
+    return this.http.put<User>(`${BASE_URL_2}/users/${id}`, user).pipe(
       catchError((error) => {
         return of({ ...user, id }).pipe(delay(600));
       })
@@ -262,9 +261,8 @@ export class ApiService {
           const mockResponse: Inscription = {
             ...inscription,
             id: Math.random().toString(36).substr(2, 9),
-            inscriptionDate:
-              inscription.inscriptionDate ||
-              new Date().toISOString().split("T")[0],
+            status:
+              inscription.status || new Date().toISOString().split("T")[0],
           };
           return of(mockResponse).pipe(delay(800));
         })
@@ -287,9 +285,9 @@ export class ApiService {
       catchError((error) => {
         const mockInscription: Inscription = {
           id: id,
-          studentId: "",
-          courseId: "",
-          inscriptionDate: new Date().toISOString().split("T")[0],
+          estudianteID: "",
+          cursoID: "",
+          status: new Date().toISOString().split("T")[0],
         };
         return of(mockInscription).pipe(delay(500));
       })
