@@ -1,16 +1,15 @@
-// models/index.ts
 export interface Student {
   id: string;
-  name: string;
+  nombre: string;
   email: string;
-  phone?: string;
-  course: string;
-  enrollmentDate?: string;
+  telefono?: string;
+  curso: string;
+  fechaDeInicio?: string;
 }
 
 export interface User {
   id: string;
-  name: string;
+  nombre: string;
   email: string;
   password?: string;
   role: "admin" | "user";
@@ -20,11 +19,10 @@ export interface User {
 
 export interface Course {
   id: string;
-  name: string;
-  instructor: string;
-  duration: number;
-  description?: string;
-  startDate?: string;
+  titulo: string;
+  profesor: string;
+  descripcion?: string;
+  precio?: string;
 }
 
 export interface LoginCredentials {
@@ -43,9 +41,9 @@ export interface ApiResponse {
 }
 export interface Inscription {
   id: string;
-  studentId: string;
-  courseId: string;
-  inscriptionDate: string;
+  estudianteID: string;
+  cursoID: string;
+  status: string;
   student?: Student;
   course?: Course;
 }

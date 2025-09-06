@@ -40,7 +40,6 @@ export class AuthEffects {
     )
   );
 
-  // Efecto para redirigir después de login exitoso
   loginSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -52,7 +51,6 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  // Efecto para manejar logout
   logout$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -65,17 +63,15 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  // Efecto para inicializar la autenticación
   initializeAuth$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.initializeApp),
       map(() => {
         const token = this.storageService.getItem("token");
         if (token) {
-          // En una app real, aquí harías una llamada para verificar el token y obtener el usuario
           return AuthActions.initializeAuth({
             token,
-            user: { name: "Usuario", email: "usuario@ejemplo.com" }, // Datos de ejemplo
+            user: { name: "Usuario", email: "usuario@ejemplo.com" },
           });
         } else {
           return AuthActions.initializeAuth({ token: null, user: null });
