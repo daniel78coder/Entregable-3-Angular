@@ -15,9 +15,9 @@ import { Inscription } from "../../models";
 export class InscriptionDetailComponent implements OnInit {
   inscription: Inscription = {
     id: "",
-    studentId: "",
-    courseId: "",
-    inscriptionDate: new Date().toISOString().split("T")[0],
+    estudianteID: "",
+    cursoID: "",
+    status: new Date().toISOString().split("T")[0],
   };
 
   isEditMode = false;

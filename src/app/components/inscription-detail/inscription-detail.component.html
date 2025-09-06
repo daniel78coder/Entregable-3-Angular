@@ -1,19 +1,24 @@
 <div class="inscription-detail-container">
-  <h2>{{ isEditMode ? 'Editar Inscripción' : 'Nueva Inscripción' }}</h2>
+  <h2>{{ isEditMode ? "Editar Inscripción" : "Nueva Inscripción" }}</h2>
 
   <div *ngIf="loading" class="loading">Cargando...</div>
 
   <div *ngIf="error" class="error">{{ error }}</div>
 
-  <form *ngIf="!loading" (ngSubmit)="saveInscription()" class="inscription-form">
+  <form
+    *ngIf="!loading"
+    (ngSubmit)="saveInscription()"
+    class="inscription-form"
+  >
     <div class="form-group">
-      <label for="studentId">ID Estudiante:</label>
+      <label for="estudianteID">ID Estudiante:</label>
       <input
         type="text"
-        id="studentId"
-        [(ngModel)]="inscription.studentId"
-        name="studentId"
-        required>
+        id="estudianteID"
+        [(ngModel)]="inscription.estudianteID"
+        name="estudianteID"
+        required
+      />
     </div>
 
     <div class="form-group">
@@ -21,9 +26,10 @@
       <input
         type="text"
         id="courseId"
-        [(ngModel)]="inscription.courseId"
+        [(ngModel)]="inscription.cursoID"
         name="courseId"
-        required>
+        required
+      />
     </div>
 
     <div class="form-group">
@@ -31,15 +37,18 @@
       <input
         type="date"
         id="inscriptionDate"
-        [(ngModel)]="inscription.inscriptionDate"
+        [(ngModel)]="inscription.status"
         name="inscriptionDate"
-        required>
+        required
+      />
     </div>
 
     <div class="form-actions">
-      <button type="button" (click)="cancel()" class="btn-secondary">Cancelar</button>
+      <button type="button" (click)="cancel()" class="btn-secondary">
+        Cancelar
+      </button>
       <button type="submit" [disabled]="loading" class="btn-primary">
-        {{ loading ? 'Guardando...' : 'Guardar' }}
+        {{ loading ? "Guardando..." : "Guardar" }}
       </button>
     </div>
   </form>

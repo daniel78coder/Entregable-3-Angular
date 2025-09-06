@@ -3,9 +3,10 @@
     <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
     <li><a routerLink="/students" routerLinkActive="active">Alumnos</a></li>
     <li><a routerLink="/courses" routerLinkActive="active">Cursos</a></li>
-    <li><a routerLink="/inscriptions" routerLinkActive="active">Inscripciones</a></li>
+    <li>
+      <a routerLink="/inscriptions" routerLinkActive="active">Inscripciones</a>
+    </li>
 
-    <!-- SOLO ADMIN VE USUARIOS -->
     <li *ngIf="(user$ | async)?.role === 'admin'">
       <a routerLink="/users" routerLinkActive="active">Usuarios</a>
     </li>

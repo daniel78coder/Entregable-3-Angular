@@ -28,13 +28,14 @@
       <tr *ngFor="let inscription of inscriptions">
         <td>
           {{
-            inscription.student?.name || "Estudiante " + inscription.studentId
+            inscription.student?.nombre ||
+              "Estudiante " + inscription.estudianteID
           }}
         </td>
         <td>
-          {{ inscription.course?.name || "Curso " + inscription.courseId }}
+          {{ inscription.course?.profesor || "Curso " + inscription.cursoID }}
         </td>
-        <td>{{ inscription.inscriptionDate | formatDate }}</td>
+        <td>{{ inscription.status | formatDate }}</td>
         <td class="actions">
           <button
             class="btn-danger"
