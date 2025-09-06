@@ -94,12 +94,12 @@ interface Student {
   email: string;
   phone?: string;
   course: string;
-  enrollmentDate: string;
+  fechaDeInicio: string;
 }
 interface Course {
   id: string;
   name: string;
-  instructor: string;
+  profesor: string;
   duration: number;
   description?: string;
   startDate?: string;

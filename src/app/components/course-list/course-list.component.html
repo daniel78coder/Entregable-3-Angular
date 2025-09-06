@@ -13,14 +13,19 @@
       </div>
 
       <div class="course-details">
-        <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+        <p><strong>Profesor:</strong> {{ course.profesor }}</p>
         <p><strong>Duración:</strong> {{ course.duration }} semanas</p>
-        <p><strong>Estudiantes inscritos:</strong> {{ getStudentsCount(course.id) }}</p>
-        <p><strong>Fecha de inicio:</strong> {{ course.startDate | formatDate }}</p>
+        <p>
+          <strong>Estudiantes inscritos:</strong>
+          {{ getStudentsCount(course.id) }}
+        </p>
+        <p>
+          <strong>Fecha de inicio:</strong> {{ course.startDate | formatDate }}
+        </p>
       </div>
 
       <div class="course-description">
-        <p>{{ course.description || 'Sin descripción disponible.' }}</p>
+        <p>{{ course.description || "Sin descripción disponible." }}</p>
       </div>
     </div>
   </div>

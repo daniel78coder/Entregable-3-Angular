@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ApiService } from '../../services/api.service';
-import { FormatDatePipe } from '../../pipes/format-date.pipe';
+import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ApiService } from "../../services/api.service";
+import { FormatDatePipe } from "../../pipes/format-date.pipe";
 
 @Component({
-  selector: 'app-course-list',
+  selector: "app-course-list",
   standalone: true,
   imports: [CommonModule, FormatDatePipe],
-  templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.css']
+  templateUrl: "./course-list.component.html",
+  styleUrls: ["./course-list.component.css"],
 })
 export class CourseListComponent implements OnInit {
   courses: any[] = [];
@@ -31,14 +31,14 @@ export class CourseListComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Error al cargar los cursos';
+        this.error = "Error al cargar los cursos";
         this.loading = false;
         console.error(err);
-      }
+      },
     });
   }
 
-  getStudentsCount(courseId: string): number {
-    return Math.floor(Math.random() * 20) + 5; 
+  getStudentsCount(cursoID: string): number {
+    return Math.floor(Math.random() * 20) + 5;
   }
 }
